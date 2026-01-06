@@ -59,28 +59,28 @@
   <body>
     <main>
       <h1>module/airtable - V8 module</h1>
-      <p class="intro">Keep Airtable updates tidy and repeatable without wiring a full client. This module focuses on the few calls most workflows need for syncing and enriching records.</p>
+      <p class="intro">Keep Airtable updates tidy and repeatable without wiring a full client. This module focuses on the calls most workflows need for syncing and enriching records.</p>
       <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
       <div class="section">
         <h2>Technical reference</h2>
         <h1>module/airtable - V8 module</h1>
-<p>Keep Airtable updates tidy and repeatable without wiring a full client. This module focuses on the few calls most workflows need for syncing and enriching records.</p>
+<p>Keep Airtable updates tidy and repeatable without wiring a full client. This module focuses on the calls most workflows need for syncing and enriching records.</p>
 <p>It is a lightweight helper meant for short, readable steps. Learn more at https://instago.ai.</p>
 <h2>Technical reference</h2>
 <h3>Exports</h3>
 <ul>
-<li><code>configure({ apiKey, api })</code> -&gt; set API key and base URL (default <code>https://api.airtable.com/v0</code>).</li>
-<li><code>query({ baseId, table, filterByFormula?, maxRecords?, pageSize?, retry?, timeoutMs? })</code> -&gt; returns <code>{ ok, data: { records, offset }, error }</code>.</li>
-<li><code>upsert({ baseId, table, records: [{ id?, fields }], typecast?, timeoutMs? })</code> -&gt; returns <code>{ ok, data: { patched, created }, error }</code>.</li>
+<li><code>configure({ apiKey, api })</code> -&gt; set the API key and base URL override (default base URL: <code>https://api.airtable.com/v0</code>).</li>
+<li><code>query({ baseId, table, filterByFormula?, maxRecords?, pageSize?, retry?, timeoutMs? })</code> -&gt; returns <code>{ ok, data: { records, offset }, error, status?, body? }</code>.</li>
+<li><code>upsert({ baseId, table, records: [{ id?, fields }], typecast?, timeoutMs? })</code> -&gt; returns <code>{ ok, data: { patched, created }, error, status?, body? }</code>.</li>
 </ul>
 <h3>Usage</h3>
 <ul>
-<li>Call <code>configure</code> once if you want to override the API key or base URL for the process.</li>
+<li>Call <code>configure</code> if you want to override the API key or base URL for the process.</li>
 <li><code>query</code> paginates until there is no <code>offset</code> or <code>maxRecords</code> is reached.</li>
 <li><code>upsert</code> updates records with <code>id</code> via PATCH and creates the rest via POST (batches of 10).</li>
 </ul>
 <h3>Configuration</h3>
-<p>Set these required <code>env</code> keys:</p>
+<p>Provide credentials via <code>configure</code> or set these required <code>env</code> keys:</p>
 <ul>
 <li><code>airtable.key</code> (API key)</li>
 <li><code>airtable.api</code> (base URL, usually <code>https://api.airtable.com/v0</code>)</li>
@@ -111,7 +111,13 @@ const saved = await airtable.upsert({
       </div>
       <div class="section">
   <h2>Changelog</h2>
-  <h2>v1.0.1 - Release metadata refresh</h2>
+  <h2>v1.0.2 - Documentation clarity refresh</h2>
+<p>Patch release with refreshed Airtable module documentation, including clearer usage guidance and examples for query and upsert workflows.</p>
+<h3>Changed</h3>
+<ul>
+<li>Refreshed usage guidance and examples to clarify query and upsert behavior.</li>
+</ul>
+<h2>v1.0.1 - Release metadata refresh</h2>
 <p>Patch release for the airtable module focused on release metadata and documentation keywords for visibility.</p>
 <h3>Changed</h3>
 <ul>
