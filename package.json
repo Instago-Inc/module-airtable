@@ -1,0 +1,17 @@
+{
+  "name": "@instago/airtable",
+  "version": "1.0.1",
+  "description": "Module airtable",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "instago",
+    "airtable"
+  ],
+  "files": [
+    "index.js",
+    "ReadMe.MD",
+    "LICENSE"
+  ]
+}

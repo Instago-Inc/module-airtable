@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>airtable Documentation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 48px 24px;
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
+      .intro {
+        font-size: 16px;
+        color: #e2e8f0;
+      }
+      p {
+        margin: 0 0 16px;
+        color: #cbd5f5;
+      }
+      ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+      }
+      a {
+        color: #93c5fd;
+      }
+      .section {
+        margin-top: 28px;
+      }
+      .muted {
+        color: #94a3b8;
+        font-size: 14px;
+        margin: 6px 0 0;
+      }
+      .code {
+        background: #0b1220;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        padding: 16px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>module/airtable - V8 module</h1>
+      <p class="intro">Pull and update Airtable rows without dealing with the raw API. Provide your base/table plus credentials and use a small set of calls to query or upsert records.</p>
+      <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
+      <div class="section">
+        <h2>Technical reference</h2>
+        <h1>module/airtable - V8 module</h1>
+<p>Pull and update Airtable rows without dealing with the raw API. Provide your base/table plus credentials and use a small set of calls to query or upsert records.</p>
+<p>Use it when you want to sync or enrich Airtable data from a workflow while keeping steps short. Learn more at https://instago.ai.</p>
+<h2>Technical reference</h2>
+<h3>Exports</h3>
+<ul>
+<li><code>configure({ apiKey, api })</code> -&gt; set API key and base URL (default <code>https://api.airtable.com/v0</code>).</li>
+<li><code>query({ baseId, table, filterByFormula?, maxRecords?, pageSize?, retry?, timeoutMs? })</code> -&gt; GET records.</li>
+<li><code>upsert({ baseId, table, records: [{ id?|fields }], typecast?, timeoutMs? })</code> -&gt; PATCH existing records with <code>id</code>, POST new ones without <code>id</code>.</li>
+</ul>
+<h3>Configuration</h3>
+<p>Set these required <code>env</code> keys:</p>
+<ul>
+<li><code>airtable.key</code> (API key)</li>
+<li><code>airtable.api</code> (base URL, usually <code>https://api.airtable.com/v0</code>)</li>
+</ul>
+<h3>Example</h3>
+<pre class="code"><code>
+const airtable = require(&#x27;airtable@1.0.0&#x27;);
+
+airtable.configure({ apiKey: env.airtable.key });
+
+// Query
+const res = await airtable.query({
+  baseId: &#x27;app123&#x27;,
+  table: &#x27;People&#x27;,
+  filterByFormula: &quot;FIND(&#x27;active&#x27;, {status})&quot;
+});
+
+// Upsert
+await airtable.upsert({
+  baseId: &#x27;app123&#x27;,
+  table: &#x27;People&#x27;,
+  records: [
+    { fields: { Name: &#x27;Jane&#x27;, Status: &#x27;active&#x27; } },
+    { id: &#x27;rec456&#x27;, fields: { Status: &#x27;inactive&#x27; } }
+  ],
+  typecast: true
+});
+</code></pre>
+<h2>Notes</h2>
+<ul>
+<li>Returns <code>{ ok, data|error }</code> and logs via <code>log@1.0.0</code>.</li>
+</ul>
+      </div>
+      
+    </main>
+  </body>
+</html>
