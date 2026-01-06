@@ -1,6 +1,6 @@
 {
   "name": "@instago/airtable",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Module airtable",
   "main": "index.js",
   "type": "commonjs",
