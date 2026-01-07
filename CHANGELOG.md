@@ -1,3 +1,10 @@
+## v1.0.4 - Documentation guidance polish
+
+Patch release sharpens the Airtable module documentation so configure, query, and upsert guidance highlights credential handling, API overrides, and response fields for reliable integrations.
+
+### Changed
+- Expanded the configure, query, and upsert documentation in docs/index.html so every section clarifies credentials, overrides, and response attributes.
+
 ## v1.0.3 - Documentation clarity polish
 
 Patch release refreshes the Airtable module docs with clearer configure, query, and upsert guidance to support reliable integrations.
